@@ -1,4 +1,7 @@
 ### Gradle ###
 .gradle
 /build/
+
 /dependencies/
+/docker/server/dependencies/
+/docker/server/rsocket-example.jar

@@ -47,3 +47,26 @@ Echo: Hello
 Echo: Hello
 Echo: Hello
 ```
+
+### Docker
+
+After building, copy the JAR files to the `docker/server` directory:
+```terminal
+docker/push.sh
+```
+
+Then build an image:
+```terminal
+pushd docker/server
+docker build .
+popd
+```
+
+Make a note of the image SHA that is printed out.
+
+Now run the image:
+```terminal
+docker run -d -p 8080:8080 <image SHA>
+```
+
+_Unfortunately, the client now fails to connect with a `ClosedChannelException`._
