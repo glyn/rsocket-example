@@ -27,9 +27,19 @@ import java.time.Duration;
 
 public class Client {
 	public static void main(String[] args) {
+		if (args.length > 1) {
+			System.out.println("Too many arguments");
+			System.exit(-1);
+		}
+
+		int port = 8080;
+		if (args.length == 1) {
+			port = Integer.parseInt(args[0]);
+		}
+
 		RSocket socket =
 				RSocketFactory.connect()
-						.transport(TcpClientTransport.create(32767))
+						.transport(TcpClientTransport.create("localhost", port))
 						.start()
 						.block();
 
