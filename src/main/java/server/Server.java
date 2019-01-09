@@ -28,7 +28,7 @@ public class Server {
 		RSocketFactory.receive()
 				// .frameDecoder(Frame::retain) // Enable zero copy
 				.acceptor(new EchoAcceptor())
-				.transport(TcpServerTransport.create("localhost", 8080))
+				.transport(TcpServerTransport.create("0.0.0.0", 8080))
 				.start()
 				.block()
 				.onClose()

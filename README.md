@@ -69,4 +69,4 @@ Now run the image:
 docker run -d -p 8080:8080 <image SHA>
 ```
 
-_Unfortunately, the client now fails to connect with a `ClosedChannelException`._
+The client should print the same output as before.
