@@ -69,4 +69,4 @@ Now run the image:
 docker run -d -p 8080:8080 <image SHA>
 ```
 
-The client should print the same output as before.
+If you run the client, it should print the same output as before.
