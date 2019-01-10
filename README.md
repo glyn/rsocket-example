@@ -24,15 +24,19 @@ Then download the dependencies by issuing:
 
 After building, issue the following command:
 ```terminal
-java -cp "build/libs/rsocket-example.jar:dependencies/*" server.Server
+java -cp "build/libs/rsocket-example.jar:dependencies/*" server.Server <port number>
 ```
+
+If ` <port number>` is omitted, a default value is used.
 
 ### Running the Client
 
 After building, issue the following command (typically in a separate terminal to the server):
 ```terminal
-java -cp "build/libs/rsocket-example.jar:dependencies/*" client.Client
+java -cp "build/libs/rsocket-example.jar:dependencies/*" client.Client  <port number>
 ```
+
+If ` <port number>` is omitted, the server's default value is used.
 
 If the server is already running, the client should print output like this:
 ```terminal
@@ -66,7 +70,24 @@ Make a note of the image SHA that is printed out.
 
 Now run the image:
 ```terminal
-docker run -d -p 8080:8080 <image SHA>
+docker run -d -p 8081:8081 <image SHA>
 ```
 
-If you run the client, it should print the same output as before.
+This will run the server in a docker container using port 8081 and will map that port to the local network.
+
+If you run the client specifying the same port, it should print the same output as before.
+```terminal
+java -cp "build/libs/rsocket-example.jar:dependencies/*" client.Client 8081
+```
+```terminal
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+Echo: Hello
+```

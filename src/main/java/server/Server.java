@@ -22,13 +22,19 @@ import io.rsocket.util.DefaultPayload;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import util.Port;
 
 public class Server {
 	public static void main(String[] args) {
+		if (args.length > 1) {
+			System.out.println("Too many arguments");
+			System.exit(-1);
+		}
+
 		RSocketFactory.receive()
 				// .frameDecoder(Frame::retain) // Enable zero copy
 				.acceptor(new EchoAcceptor())
-				.transport(TcpServerTransport.create("0.0.0.0", 8080))
+				.transport(TcpServerTransport.create("0.0.0.0", Port.getPort(args)))
 				.start()
 				.block()
 				.onClose()

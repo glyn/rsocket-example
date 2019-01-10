@@ -4,4 +4,4 @@ FROM openjdk:8-jre-alpine
 COPY rsocket-example.jar /rsocket-example.jar
 COPY dependencies /dependencies
 # run application with this command line
-CMD ["/usr/bin/java","-cp", "rsocket-example.jar:dependencies/*", "server.Server"]
+CMD ["/usr/bin/java","-cp", "rsocket-example.jar:dependencies/*", "server.Server", "8081"]
