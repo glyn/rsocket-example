@@ -91,3 +91,7 @@ Echo: Hello
 Echo: Hello
 Echo: Hello
 ```
+
+### Debugging
+
+Set the logger `io.rsocket.FrameLogger` to `Debug` in [`log4j.properties`](src/main/resources/log4j.properties) and rebuild.

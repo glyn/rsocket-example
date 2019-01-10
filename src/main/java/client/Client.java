@@ -22,20 +22,21 @@ import io.rsocket.RSocketFactory;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.DefaultPayload;
 import reactor.core.publisher.Flux;
+import util.Host;
 import util.Port;
 
 import java.time.Duration;
 
 public class Client {
 	public static void main(String[] args) {
-		if (args.length > 1) {
+		if (args.length > 2) {
 			System.out.println("Too many arguments");
 			System.exit(-1);
 		}
 
 		RSocket socket =
 				RSocketFactory.connect()
-						.transport(TcpClientTransport.create("localhost", Port.getPort(args)))
+						.transport(TcpClientTransport.create(Host.getHost(args), Port.getPort(args)))
 						.start()
 						.block();
 
